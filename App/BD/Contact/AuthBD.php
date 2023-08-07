@@ -40,7 +40,7 @@ class AuthBD extends connection
     public function createToken (TokenModel $tokenModel) : void{
     
         $statement = $this -> pdo
-        -> prepare("insert into tbl_Token (toke,refresh_token,data,idLogin) value	(:token,:refresh_token,:date_token,:id_user);");
+        -> prepare("insert into tbl_Token (token,refresh_token,data,idLogin) value	(:token,:refresh_token,:date_token,:id_user);");
     
         $statement -> execute([
           'token' => $tokenModel -> getToken(),
