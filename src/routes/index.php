@@ -1,12 +1,12 @@
 <?php
 
 use function src\slimConfiguration;
-use App\Controllers\testeController;
+use App\Controllers\ArchiveController;
 
 // Create and configure Slim app
 $app = new \Slim\App(slimConfiguration());
 // Define app routes
-$app->get('/thales', testeController::class . ':getIccid');
+$app->get('/thales', ArchiveController::class . ':getIccid');
 
 // Run app
 

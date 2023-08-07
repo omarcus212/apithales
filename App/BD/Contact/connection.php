@@ -18,7 +18,7 @@ abstract class connection {
         $pass = getenv('UPTECHNOLOGY1_PG_PASSWORD');
         $dbname = getenv('UPTECHNOLOGY1_PG_DBNAME');
 
-        $dsn = "pgsql:host={$host};dbname={$dbname};port={$port}";
+        $dsn = "mysql:host={$host};dbname={$dbname};port={$port}";
 
         $this -> pdo = new \PDO($dsn , $user , $pass);
 
