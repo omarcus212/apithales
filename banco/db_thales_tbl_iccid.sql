@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `db_thales` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `db_thales`;
 -- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
 --
 -- Host: localhost    Database: db_thales
@@ -26,9 +24,12 @@ DROP TABLE IF EXISTS `tbl_iccid`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `tbl_iccid` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `iccid` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `iccid` varchar(300) NOT NULL,
+  `idarquivo` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_ARQUIVO_ICCID` (`idarquivo`),
+  CONSTRAINT `FK_ARQUIVO_ICCID` FOREIGN KEY (`idarquivo`) REFERENCES `tbl_arquivo` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +38,7 @@ CREATE TABLE `tbl_iccid` (
 
 LOCK TABLES `tbl_iccid` WRITE;
 /*!40000 ALTER TABLE `tbl_iccid` DISABLE KEYS */;
-INSERT INTO `tbl_iccid` VALUES (1,'00000000000000000040'),(2,'00000000000000000040'),(3,'00000000000000000040'),(4,'00000000000000000008');
+INSERT INTO `tbl_iccid` VALUES (1,'00000000000000000008',1),(2,'00000000000000000016',1),(3,'00000000000000000024',1),(4,'00000000000000000032',1),(5,'00000000000000000040',1);
 /*!40000 ALTER TABLE `tbl_iccid` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-07 11:25:25
+-- Dump completed on 2023-08-07 16:26:06

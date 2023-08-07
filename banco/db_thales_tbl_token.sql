@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `db_thales` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `db_thales`;
 -- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
 --
 -- Host: localhost    Database: db_thales
@@ -26,14 +24,13 @@ DROP TABLE IF EXISTS `tbl_token`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `tbl_token` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `token` varchar(500) NOT NULL,
+  `toke` varchar(500) NOT NULL,
   `refresh_token` varchar(300) NOT NULL,
-  `data` datetime NOT NULL,
+  `data` datetime DEFAULT NULL,
   `idLogin` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK_token_Login` (`idLogin`),
-  CONSTRAINT `FK_token_Login` FOREIGN KEY (`idLogin`) REFERENCES `tbl_login` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `FK_TOKEN_LOGIN` FOREIGN KEY (`id`) REFERENCES `tbl_login` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +39,6 @@ CREATE TABLE `tbl_token` (
 
 LOCK TABLES `tbl_token` WRITE;
 /*!40000 ALTER TABLE `tbl_token` DISABLE KEYS */;
-INSERT INTO `tbl_token` VALUES (1,'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwibmFtZSI6Im1hcmN1cyIsImVtYWlsIjoibWFyY3VzQGdtYWlsLmNvbSIsImV4cGlyZWRfYXQiOiIyMDIzLTA3LTI0IDIzOjI2OjM5In0.icr7Ay-GE5P3mPFKaxvkTU1EG2jZiZOnqrvI89w8Cb4','eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1hcmN1c0BnbWFpbC5jb20ifQ.N3qym9AFRi_7snP9BmOIA0N6q4Rn494lCKwvK3Aa-Y4','2023-07-24 23:26:39',1),(2,'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwibmFtZSI6Im1hcmN1cyIsImVtYWlsIjoibWFyY3VzQGdtYWlsLmNvbSIsImV4cGlyZWRfYXQiOiIyMDIzLTA3LTI0IDIzOjI2OjM5In0.icr7Ay-GE5P3mPFKaxvkTU1EG2jZiZOnqrvI89w8Cb4','eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1hcmN1c0BnbWFpbC5jb20ifQ.N3qym9AFRi_7snP9BmOIA0N6q4Rn494lCKwvK3Aa-Y4','2023-08-20 23:26:39',2),(3,'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwibmFtZSI6Im1hcmN1cyIsImVtYWlsIjoibWFyY3VzQGdtYWlsLmNvbSIsImV4cGlyZWRfYXQiOiIyMDIzLTA3LTI0IDIzOjI2OjM5In0.icr7Ay-GE5P3mPFKaxvkTU1EG2jZiZOnqrvI89w8Cb4','eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1hcmN1c0BnbWFpbC5jb20ifQ.N3qym9AFRi_7snP9BmOIA0N6q4Rn494lCKwvK3Aa-00','2023-08-20 23:26:39',3);
 /*!40000 ALTER TABLE `tbl_token` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-07 11:25:26
+-- Dump completed on 2023-08-07 16:26:06

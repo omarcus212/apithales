@@ -2,7 +2,8 @@
 
 namespace App\BD\Contact;
 
-use App\Models\UsuarioModel;
+use App\Model\TokenModel;
+use App\Model\UsuarioModel;
 
 class AuthBD extends connection
 {
@@ -13,16 +14,12 @@ class AuthBD extends connection
 
     }
 
-    public function Post_Login($email, $name, $pass): ?UsuarioModel
+    public function Post_Login($email, $name, $pass) : ? UsuarioModel
     {
+
+     
         $statement = $this->pdo
-            ->query("select email,nome,senha from tbl_Login where email = :a or nome = :b and senha = :c;");
-
-        $statement->bindParam('a', $email);
-        $statement->bindParam('b', $name);
-        $statement->bindParam('c', $pass);
-
-        $statement->execute();
+            ->query('SELECT id,email,nome,senha from tbl_Login where email = '."'$email'".' or nome = '."'$name'".' and senha = '."'$pass'".';');
 
         $users = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
@@ -37,6 +34,22 @@ class AuthBD extends connection
         return $usuario;
 
     }
+
+
+
+    public function createToken (TokenModel $tokenModel) : void{
+    
+        $statement = $this -> pdo
+        -> prepare("insert into tbl_Token (toke,refresh_token,data,idLogin) value	(:token,:refresh_token,:date_token,:id_user);");
+    
+        $statement -> execute([
+          'token' => $tokenModel -> getToken(),
+          'refresh_token' => $tokenModel -> getRefresh_token(),
+          'date_token' => $tokenModel -> getExpired_at(),
+          'id_user' => $tokenModel -> getUsuarios_id(),
+      ]);
+    
+      }
 
 
 
