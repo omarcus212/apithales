@@ -16,28 +16,38 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tbl_login`
+-- Table structure for table `tbl_arquivo`
 --
 
-DROP TABLE IF EXISTS `tbl_login`;
+DROP TABLE IF EXISTS `tbl_arquivo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `tbl_login` (
-  `email` varchar(250) DEFAULT NULL,
-  `nome` varchar(250) NOT NULL,
-  `senha` varchar(150) DEFAULT NULL,
+CREATE TABLE `tbl_arquivo` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Item_Code` varchar(50) NOT NULL,
+  `Item_Description` varchar(150) NOT NULL,
+  `Customer` varchar(150) NOT NULL,
+  `Provider` varchar(150) NOT NULL,
+  `Packaging` varchar(150) NOT NULL,
+  `CUSTOMER_P` int(11) NOT NULL,
+  `Batch` varchar(150) NOT NULL,
+  `QUANTITY` int(11) NOT NULL,
+  `HLR` int(11) NOT NULL,
+  `EAN` varchar(50) DEFAULT NULL,
+  `Packaging_2` varchar(100) NOT NULL,
+  `Profile` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_login`
+-- Dumping data for table `tbl_arquivo`
 --
 
-LOCK TABLES `tbl_login` WRITE;
-/*!40000 ALTER TABLE `tbl_login` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_login` ENABLE KEYS */;
+LOCK TABLES `tbl_arquivo` WRITE;
+/*!40000 ALTER TABLE `tbl_arquivo` DISABLE KEYS */;
+INSERT INTO `tbl_arquivo` VALUES (1,'O1170339','CARD_GSM CLARO POS NP SIMTRIO ','Claro SP','Thales','A3083004',301309380,'TA079288',5,15,'7894537020609','Bopp_pospago','AA.15');
+/*!40000 ALTER TABLE `tbl_arquivo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-07 16:26:06
+-- Dump completed on 2023-08-07 16:26:05

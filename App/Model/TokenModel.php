@@ -1,6 +1,6 @@
 <?php
 
-    namespace App\Models;
+    namespace App\Model;
 
     final class TokenModel{
 
@@ -23,7 +23,7 @@
         /**
          * @var int
          */
-        private $usuarios;
+        private $usuarios_id;
 
 
         public function getId() : int {
@@ -81,12 +81,12 @@
       }
 
       public function getUsuarios_id() : int {
-        return $this -> usuarios;
+        return $this -> usuarios_id;
    }
 
-    public function setUsuarios(array $usuarios_id) : TokenModel{
+    public function setUsuarios_id(int $usuariosid) : TokenModel{
 
-        $this -> usuarios = $usuarios_id;
+        $this -> usuarios_id = $usuariosid;
 
         return $this;
 
