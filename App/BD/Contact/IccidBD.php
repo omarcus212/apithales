@@ -16,7 +16,7 @@ class IccidBD extends connection
         $estoques = $this->pdo
             ->query("SELECT *
             FROM tbl_Arquivos a
-            INNER JOIN tbl_ICCID c ON a.id = c.id;;")
+            INNER JOIN tbl_ICCID c ON a.id = c.id;")
             ->fetchAll(\PDO::FETCH_ASSOC);
         return $estoques;
 
